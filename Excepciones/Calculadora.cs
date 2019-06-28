@@ -6,13 +6,25 @@ namespace Excepciones
     {
         public static decimal Calcular( string op, int x , int y )
         {
+            if(string.IsNullOrEmpty(op) )
+            {
+                 throw new ArgumentNullException(nameof(op));
+            }
+
             if( op == "/" ) 
             {
-                return Division(x,y);
+                try
+                {
+                    return Division(x,y);
+                }
+                catch  (DivideByZeroException e)
+                {
+                    throw new InvalidOperationException("Operacion invalida",e) ;
+                }
             }
             else
             {
-                throw new Exception($"Operador {op} no soportado");
+                throw new ArgumentOutOfRangeException(nameof(op),op ,$"Operador {op} no soportado");
             }
         }
 

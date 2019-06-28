@@ -6,6 +6,7 @@ namespace Excepciones
     {
         static void Main(string[] args)
         {
+
             Console.WriteLine(" ingrese un numero");
             int x = int.Parse(Console.ReadLine());
 
@@ -14,9 +15,18 @@ namespace Excepciones
 
             Console.WriteLine(" ingrese un operador");
             string op = Console.ReadLine();
-            Console.WriteLine($"El resultado es: {Calculadora.Calcular(op,x,y)}");
+
+            try
+            {
+                Console.WriteLine($"El resultado es: {Calculadora.Calcular(op, x, y)}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Ocurrio un error");
+            }
 
             Console.ReadKey();
+            
         }
     }
 }
