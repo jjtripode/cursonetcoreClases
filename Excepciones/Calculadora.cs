@@ -24,7 +24,7 @@ namespace Excepciones
             }
             else
             {
-                throw new ArgumentOutOfRangeException(nameof(op),op ,$"Operador {op} no soportado");
+                throw new CalculadoraFaltaOperadorException($"Operador {op} no soportado");
             }
         }
 

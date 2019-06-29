@@ -20,13 +20,19 @@ namespace Excepciones
             {
                 Console.WriteLine($"El resultado es: {Calculadora.Calcular(op, x, y)}");
             }
-            catch (Exception e)
+
+            catch (CalculadoraFaltaOperadorException e) 
             {
-                Console.WriteLine("Ocurrio un error");
+                Console.WriteLine("Ocurrio un error CalculadoraFaltaOperadorException");
+            }
+
+            catch (Exception e) when (e.Message == "")   
+            {
+                Console.WriteLine("Ocurrio un error Exception Generica"); 
             }
 
             Console.ReadKey();
-            
+
         }
     }
 }
