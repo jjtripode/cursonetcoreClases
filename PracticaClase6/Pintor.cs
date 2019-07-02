@@ -2,27 +2,16 @@ using System;
 
 namespace PracticaClase6
 {
-    public class Pintor : Persona 
+    public class Pintor : Persona<Pintar> 
     {
-        private string _profesion;
 
-        public Pintor(string profesion)
+        public Pintor()
         {
-            _profesion = profesion;
+            _profesion = this.GetType().ToString();
         }
         public void Pintar()
         {
             Console.WriteLine("Pintando....");
-        }
-
-        public override string Profesion()
-        {
-            return _profesion;
-        }
-
-        public override void Trabajar(ITarea tarea)
-        {
-            tarea.Realizar();
         }
     }
 }

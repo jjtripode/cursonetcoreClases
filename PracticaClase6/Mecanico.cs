@@ -3,28 +3,13 @@ using System.Threading.Tasks;
 
 namespace PracticaClase6
 {
-    public class Mecanico : Persona 
+    public class Mecanico : Persona<RepararAuto> 
     {
-        private string _profesion;
-
-        public Mecanico(string profesion)
+        public Mecanico()
         {
-            _profesion = profesion;
-        }
-        public override string Profesion()
-        {
-            return _profesion;
+            _profesion = this.GetType().ToString();
         }
 
-        public void ReparaAuto()
-        {
-           Task.Delay(3000); 
-           Console.WriteLine("Reparando el auto");
-        }
-
-        public override void Trabajar(ITarea tarea)
-        {
-           tarea.Realizar();
-        }
+        
     }
 }
