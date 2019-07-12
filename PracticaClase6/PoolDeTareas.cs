@@ -5,13 +5,14 @@ namespace PracticaClase6
 {
     public class PoolDeTareas
     {
-        private IList<RepararAuto> autoAReparar = new List<RepararAuto>();
-        private IList<Pintar> casaAPintar = new List<Pintar>();
+        private IList<RepararAuto> autoAReparar = new List<RepararAuto>(){new RepararAuto(),new RepararAuto(),new RepararAuto(),new RepararAuto(),new RepararAuto()};
+        private IList<Pintar> casaAPintar = new List<Pintar>(){new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar()};
         public void TomarTarea(Mecanico m)
         {
             if(autoAReparar.Any())
             {
-                m.RecibirTarea(new RepararAuto());
+                m.RecibirTarea(autoAReparar.FirstOrDefault());
+                autoAReparar.Remove(autoAReparar.FirstOrDefault());
             }
         }
 
@@ -19,7 +20,8 @@ namespace PracticaClase6
         {
             if(casaAPintar.Any())
             {
-                 p.RecibirTarea(new Pintar());
+                 p.RecibirTarea(casaAPintar.FirstOrDefault());
+                 casaAPintar.Remove(casaAPintar.FirstOrDefault());
             }
         }
     }

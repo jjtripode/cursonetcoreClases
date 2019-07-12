@@ -16,7 +16,10 @@ namespace Excepciones
             Console.WriteLine(" ingrese un operador");
             string op = Console.ReadLine();
 
+           var i = 15;
+
             try
+
             {
                 Console.WriteLine($"El resultado es: {Calculadora.Calcular(op, x, y)}");
             }

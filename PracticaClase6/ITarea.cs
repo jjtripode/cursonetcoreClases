@@ -36,7 +36,7 @@ namespace PracticaClase6
                 this.On_Task_Start(this.GetType().ToString());
             }
 
-            Thread.Sleep(3000);
+            Thread.Sleep(1000);
 
             if (this.On_Task_end != null)
             {
@@ -54,7 +54,7 @@ namespace PracticaClase6
                 this.On_Task_Start(this.GetType().ToString());
             }
 
-           Thread.Sleep(3000);
+           Thread.Sleep(1500);
 
             if (this.On_Task_end != null)
             {

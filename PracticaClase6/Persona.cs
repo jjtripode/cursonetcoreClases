@@ -27,7 +27,11 @@ namespace PracticaClase6
 
          public void RealizarTarea()
          {
-           _tarea.Realizar();
+            if(_tarea!= null)
+           {
+               _tarea.Realizar();
+           }
+           _tarea=null;
          }
 
           public string Profesion()
