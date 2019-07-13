@@ -6,43 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta http-equiv="Cache-control" content="public">
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+
     <title>Banco Hipotetico</title>
-    <style type="text/css">
-        h1 {
-            background-color: black;
-            color: aliceblue;
-            text-align: center;
-            font-size: 55px !important  ;
-        }
-        h2
-        {
-            background-color: black; 
-            color: white;
-        }
-        body
-        {
-            font-family: Verdana;
-            font-size: 12px; 
-        }
 
-        #homebanking label
-        {
-            font-weight: bold;
-            margin: 5px;
-        }
-
-        input{
-            width: 300px;
-            height: 50px;
-            margin: 5px;
-        }
-
-        footer
-        {
-            background-color: orange;
-            margin: 10px;
-        }
-    </style>
 </head>
 
 <body>
@@ -51,20 +18,23 @@
         <img src="https://www.hipotecario.com.ar/media/logoHeader.gif" alt="click para ganarte un auto!">
         <h1>Banco Hipotetico</h1>
         <hr />
-       <nav>
-            <ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <ul class="navbar-nav">
                 <!-- <li><a href="https://hb.hipotecario.com.ar/hb/#/" target="_blank"> HOME BANKING </a></li> -->
-                <li><a href="#homebanking" target=""> HOME BANKING </a></li>
-                <li><a href="#servicios"> SERVICIOS </a></li>
-                <li><a href="#bancaPersonal"> BANCA PERSONAL</a></li>
-                <li><a href="https://bh.hipotecario.com.ar" target="_blank"> BANCA EMPRESAS</a></li>
-                <li><a href="https://bh.hipotecario.com.ar" target="_blank"> INSTITUCIONAL </a></li>
-                <li><a href="https://bh.hipotecario.com.ar" target="_blank"> INVERSIORES </a></li>
+                <li class="nav-item"><a class="nav-link" href="#homebanking" target=""> HOME BANKING </a></li>
+                <li class="nav-item"><a class="nav-link" href="#servicios"> SERVICIOS </a></li>
+                <li class="nav-item"><a class="nav-link" href="#bancaPersonal"> BANCA PERSONAL</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://bh.hipotecario.com.ar" target="_blank"> BANCA
+                        EMPRESAS</a></li>
+                <li class="nav-item"><a class="nav-link" href="https://bh.hipotecario.com.ar" target="_blank">
+                        INSTITUCIONAL </a></li>
+                <li class="nav-item"><a class="nav-link" href="https://bh.hipotecario.com.ar" target="_blank">
+                        INVERSIORES </a></li>
             </ul>
         </nav>
     </header>
 </body>
-<main>
+<main class="container">
     <section id="imagenes">
         <img src="https://www.hipotecario.com.ar/media/slide-plazo-fijo-logros.jpg" alt="">
     </section>
@@ -200,18 +170,37 @@
     <section id="homebanking">
         <h1> Home Banking</h1>
         <form action="index.html">
-            <label for="documento"> documento </label><br>
-            <input type="number" id="documento" name="documento" placeholder="DNI" required><br>
+            <div class="row">
+                    <div class="col-md-4 col-12">
+                    <label for="documento"> documento </label>
+                    <input class="form-control" type="number" id="documento" name="documento" placeholder="DNI" required>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-4 col-12">
+                    <label for="documento"> usuario </label>
+                    <input class="form-control" type="password" id="usuario" name="usuario" placeholder="Usuario Bh">
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-md-4 col-12">
+                    <label for="documento"> clave </label>
+                    <input class="form-control" type="password" id="clave" name="clave" placeholder="clave buho electronica">
+                </div>
 
-            <label for="documento"> usuario </label><br>
-            <input type="password" id="usuario" name="usuario" placeholder="Usuario Bh"><br>
 
-            <label for="documento"> clave </label><br>
-            <input type="password" id="clave" name="clave" placeholder="clave buho electronica"><br>
-
-            <label for="recordarDocumento"> Recordar clave </label><br>
-            <input type="checkbox" id="recordarDocumento" name="recordarDocumento"><br>
-            <button type="submit">Ingresar</button>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-12">
+                    <label class="col-form-label-lg" for="recordarDocumento"> Recordar clave </label>
+                    <input class="form-control" type="checkbox" id="recordarDocumento" name="recordarDocumento">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button class="btn btn-success" type="submit">Ingresar</button>
+                </div>
+            </div>
         </form>
     </section>
 
