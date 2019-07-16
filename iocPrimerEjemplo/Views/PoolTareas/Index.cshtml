@@ -1,0 +1,53 @@
+﻿@model PoolTareasViewModel
+@{
+    ViewData["Title"] = "Persona";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="text-center">
+	<table class="table table-hover">
+			<thead>
+				<tr>
+					<td>&#x2714;</td>
+					<td>Nombre</td>
+				</tr>
+		  </thead>
+		  @foreach (var item in Model.autoAReparar)
+		  {
+			<tr>
+				<td>
+					<input type="checkbox" class="done-checkbox">
+				</td>
+				<td>@item.Info()</td>
+			</tr>
+		  }
+	  </table>
+  <div class="panel-footer add-item-form">
+  <!-- TODO: Add item form -->
+  </div>
+</div>
+<div class="text-center">
+	<table class="table table-hover">
+			<thead>
+				<tr>
+					<td>&#x2714;</td>
+					<td>Nombre</td>
+				</tr>
+		  </thead>
+		  @foreach (var item in Model.casaAPintar)
+		  {
+			<tr>
+				<td>
+					<input type="checkbox" class="done-checkbox">
+				</td>
+				<td>@item.Info()</td>
+			</tr>
+		  }
+	  </table>
+  <div class="panel-footer add-item-form">
+  <!-- TODO: Add item form -->
+  </div>
+</div>
