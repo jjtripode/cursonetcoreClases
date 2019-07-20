@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using iocPrimerEjemplo.DomainModel;
 
 namespace iocPrimerEjemplo.DomainModel
@@ -12,6 +13,8 @@ namespace iocPrimerEjemplo.DomainModel
         public string _profesion = string.Empty;
         private T _tarea;
 
+[Key]
+        public Guid Id {get;set;} 
         public string Nombre { get; set; }
          public string Apellido { get; set; }
          public string Documento { get;set; }

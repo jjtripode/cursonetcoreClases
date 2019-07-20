@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using iocPrimerEjemplo.DB;
 using iocPrimerEjemplo.DomainModel;
+using iocPrimerEjemplo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -32,7 +35,12 @@ namespace iocPrimerEjemplo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-services.AddSingleton<IPoolDeTareasService,PoolDeTareasService>();
+
+            services.AddDbContext<ApplicationDbContext>(options=>
+              options.UseSqlite(
+                            Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<IPoolDeTareasService, PoolTareasService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

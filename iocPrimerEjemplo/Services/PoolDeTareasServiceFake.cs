@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using iocPrimerEjemplo.DomainModel;
 
-namespace iocPrimerEjemplo.DomainModel
+namespace iocPrimerEjemplo.Services
 {
-    public class PoolDeTareasService : IPoolDeTareasService
+    public class PoolDeTareasServiceFake : IPoolDeTareasService
     {
         private IList<RepararAuto> autoAReparar = new List<RepararAuto>(){new RepararAuto(),new RepararAuto(),new RepararAuto(),new RepararAuto(),new RepararAuto()};
         private IList<Pintar> casaAPintar = new List<Pintar>(){new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar(),new Pintar()};
@@ -14,9 +16,9 @@ namespace iocPrimerEjemplo.DomainModel
             this.autoAReparar.Add(tarea);
         }
 
-        public IList<RepararAuto> GetAllTareasMecanica()
+        public Task< IList<RepararAuto>> GetAllTareasMecanica()
         {
-            return this.autoAReparar;
+            throw new NotImplementedException();
         }
 
         public void AgregarTarea(Pintar tarea)
@@ -42,9 +44,9 @@ namespace iocPrimerEjemplo.DomainModel
             }
         }
 
-        public IList<Pintar> GetAllTareasPintura()
+        public Task<IList<Pintar>> GetAllTareasPintura()
         {
-           return casaAPintar;
+           throw new NotImplementedException();
         }
     }
 }

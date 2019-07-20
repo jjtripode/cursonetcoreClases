@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using iocPrimerEjemplo.Models;
 using iocPrimerEjemplo.DomainModel;
+using iocPrimerEjemplo.Services;
 
 namespace iocPrimerEjemplo.Controllers
 {
@@ -12,12 +13,12 @@ namespace iocPrimerEjemplo.Controllers
         {
             _service = service;
         }
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View(new PoolTareasViewModel()
+            return  View(new PoolTareasViewModel()
             {
-                autoAReparar = _service.GetAllTareasMecanica(),
-                casaAPintar = _service.GetAllTareasPintura()
+                autoAReparar = _service.GetAllTareasMecanica().Result,
+                casaAPintar = _service.GetAllTareasPintura().Result
             });
         }
     }
