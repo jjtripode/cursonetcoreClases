@@ -4,12 +4,14 @@
 }
 
 <h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<h2 class="text-danger">An error occurred while processing your request in @Model.Path.</h2>
 
 @if (Model.ShowRequestId)
 {
     <p>
-        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+        <strong>Request ID:</strong>
+         <code>@Model.RequestId</code>
+         <span> @Model.Path</span>
     </p>
 }
 
