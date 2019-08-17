@@ -33,7 +33,7 @@ namespace AspNetCoreTodo.Services
         public async Task<TodoItem[]> GetIncompleteItemsAsync(IdentityUser user)
         {
             return await _context.Items
-                .Where(x => !x.IsDone && x.UserId == user.Id)
+                .Where(x => !x.IsDone && x.UserId == user.Id).Include(x=> x.Category)
                 .ToArrayAsync();
         }
 
