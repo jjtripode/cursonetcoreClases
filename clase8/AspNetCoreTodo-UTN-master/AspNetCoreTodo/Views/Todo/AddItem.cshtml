@@ -1,0 +1,50 @@
+@model TodoItemViewModel
+    <form asp-action="AddItem" method="POST">
+        <div class="row">
+ <table class="table table-hover">
+			<thead>
+				<tr>
+					<th>nombre</th>
+				</tr>
+		  </thead>
+       
+         @foreach (var item in Model.Categories)
+		  {
+			<tr>
+				
+				<td>@item.Name</td>
+				
+			</tr>
+		  }
+	  </table>
+
+
+            <div class="col-sm">
+                <label asp-for="Title" class="control-label">Add a new item:</label>
+                 <input asp-for="Title" type="text" class="form-control" placeholder="Title" aria-label="Title" aria-describedby="">
+            </div>
+            <div class="col-sm-6">
+                <label asp-for="CategoryId" class="control-label">Category:</label>
+                <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))" class="form-control"></select>
+      
+       
+       
+       
+       
+       
+            </div>
+        </div>
+               <div class="input-group mb-3">
+                     <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="submit">Add</button>
+                    </div>
+                </div>
+    </form>
+    @section Scripts{
+	<script type="text/javascript">
+		$('#datepicker').datepicker({
+			format: 'dd/mm/yyyy',
+			uiLibrary: 'bootstrap4'
+		});
+	</script>
+}

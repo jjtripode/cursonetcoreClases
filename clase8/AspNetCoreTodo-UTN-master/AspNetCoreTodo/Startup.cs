@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using AspNetCoreTodo.Data.AspNetCoreTodo.Data;
-using AspNetCoreTodo.Services;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using AspNetCoreTodo.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AspNetCoreTodo.Services;
 
 namespace AspNetCoreTodo
 {
@@ -35,18 +36,28 @@ namespace AspNetCoreTodo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<ApplicationDbContext>(options=>
-              options.UseSqlite(
-                            Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlite(
+                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddDefaultUI(UIFramework.Bootstrap4)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddScoped<ITodoItemService, TodoItemService>();
+            services.AddScoped<ICategoryService, CategoryService>();
 
-            services.AddScoped<ITodoItemService, TodoItemServiceAsync>();
+            // services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
-
-
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env,
+            RoleManager<IdentityRole> roleManager,
+            UserManager<IdentityUser> userManager
+            )
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +74,8 @@ namespace AspNetCoreTodo
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
@@ -70,7 +83,7 @@ namespace AspNetCoreTodo
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            ApplicationDbInitializer.SeedRole(RoleManager);
+            ApplicationDbInitializer.SeedRole(roleManager);
             ApplicationDbInitializer.SeedUsers(userManager);
         }
     }
